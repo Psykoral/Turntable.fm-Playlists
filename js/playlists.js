@@ -133,10 +133,18 @@ TFMPL.ui = {
 		TFMPL.log("ui.init");
 		
 		if (!$("#TFMPL").length) {
+			var winWidth = $(window).width(),
+			    moveLeft = 1240,
+			    topPos = 0;
+			if(winWidth < 1030)
+			{
+			    moveLeft = 1000;
+			    topPos = 65;
+			}
 			$("<div/>").
 				attr("id", "TFMPL").
 				addClass("playlist-container").
-				css({ width: 233, top: 99, left: Math.round((760 + (($(window).width() - 760)) / 2) + 10) }).appendTo("body");
+				css({ width: 256, top: topPos, left: Math.round((((winWidth - moveLeft)) / 2) + 10) }).appendTo("body");
 				
 			$("<div/>").
 				addClass("black-right-header").
